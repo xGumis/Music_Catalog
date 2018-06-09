@@ -1,0 +1,2 @@
+c:\users\xgumi\onedrive\documents\visual studio 2015\Projects\Katalog_Muzyki\bin\Debug\Katalog_Muzyki.exe.config
+C:\Users\xgumi\Source\Repos\Music_Catalog\bin\Debug\Katalog_Muzyki.exe.config
