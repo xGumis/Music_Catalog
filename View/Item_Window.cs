@@ -16,6 +16,7 @@ namespace Katalog_Muzyki.View
         public event Action<Wrapper> AddElement;
         public event Action<Wrapper,int> EditElement;
         public event Action WindowClosing;
+        public event Func<int, string[]> GetList;
         #endregion
         #region Fields
         private int id;
@@ -83,5 +84,6 @@ namespace Katalog_Muzyki.View
             WindowClosing();
         }
         #endregion
+
     }
 }

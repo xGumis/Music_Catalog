@@ -63,7 +63,7 @@
             this.textBox_album.Location = new System.Drawing.Point(91, 129);
             this.textBox_album.Name = "textBox_album";
             this.textBox_album.Size = new System.Drawing.Size(246, 20);
-            this.textBox_album.TabIndex = 1;
+            this.textBox_album.TabIndex = 2;
             // 
             // textBox_title
             // 
@@ -72,7 +72,7 @@
             this.textBox_title.Location = new System.Drawing.Point(91, 103);
             this.textBox_title.Name = "textBox_title";
             this.textBox_title.Size = new System.Drawing.Size(246, 20);
-            this.textBox_title.TabIndex = 2;
+            this.textBox_title.TabIndex = 1;
             // 
             // textBox_genre
             // 
@@ -93,7 +93,8 @@
             this.textBox_file.ReadOnly = true;
             this.textBox_file.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textBox_file.Size = new System.Drawing.Size(246, 20);
-            this.textBox_file.TabIndex = 5;
+            this.textBox_file.TabIndex = 8;
+            this.textBox_file.TabStop = false;
             // 
             // label_artist
             // 
@@ -155,7 +156,7 @@
             this.button_file.Location = new System.Drawing.Point(275, 285);
             this.button_file.Name = "button_file";
             this.button_file.Size = new System.Drawing.Size(62, 23);
-            this.button_file.TabIndex = 12;
+            this.button_file.TabIndex = 5;
             this.button_file.Text = "Wybierz..";
             this.button_file.UseVisualStyleBackColor = true;
             this.button_file.Click += new System.EventHandler(this.button_file_Click);
@@ -169,7 +170,7 @@
             this.button_Accept.Location = new System.Drawing.Point(15, 309);
             this.button_Accept.Name = "button_Accept";
             this.button_Accept.Size = new System.Drawing.Size(75, 23);
-            this.button_Accept.TabIndex = 13;
+            this.button_Accept.TabIndex = 6;
             this.button_Accept.Text = "Zatwierdź";
             this.button_Accept.UseVisualStyleBackColor = true;
             this.button_Accept.Click += new System.EventHandler(this.button_Accept_Click);
@@ -179,7 +180,7 @@
             this.button_Cancel.Location = new System.Drawing.Point(96, 309);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 14;
+            this.button_Cancel.TabIndex = 7;
             this.button_Cancel.Text = "Anuluj";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -192,7 +193,7 @@
             this.maskedTextBox_duration.Mask = "00:00:00";
             this.maskedTextBox_duration.Name = "maskedTextBox_duration";
             this.maskedTextBox_duration.Size = new System.Drawing.Size(246, 20);
-            this.maskedTextBox_duration.TabIndex = 15;
+            this.maskedTextBox_duration.TabIndex = 4;
             this.maskedTextBox_duration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Item_Window

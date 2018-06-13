@@ -119,6 +119,7 @@ namespace Katalog_Muzyki
             View.Item_Window tmp = new View.Item_Window();
             tmp.AddElement += Item_AddElement;
             tmp.WindowClosing += Item_Closing;
+            tmp.GetList += Item_GetList;
             this.Enabled = false;
             tmp.Show();
         }
@@ -137,6 +138,7 @@ namespace Katalog_Muzyki
             View.Item_Window window = new View.Item_Window(tmp, id);
             window.EditElement += Item_EditElement;
             window.WindowClosing += Item_Closing;
+            window.GetList += Item_GetList;
             this.Enabled = false;
             window.Show();
 
@@ -243,6 +245,13 @@ namespace Katalog_Muzyki
         }
         #endregion
         #region Custom methods
+        private string[] Item_GetList(int arg)
+        {
+            if (arg == 1) return GetList("Album");
+            else if (arg == 2) return GetList("Autor");
+            else if (arg == 3) return GetList("Gatunek");
+            else return null;
+        }
         private void Item_Closing()
         {
             this.Enabled = true;
