@@ -104,11 +104,44 @@ namespace Katalog_Muzyki
             return list.Count;
         }
         public void DeleteEntry(int id) { list.RemoveAt(id); }
-        public List<Wrapper> LoadCatalog()
+        public List<Wrapper> LoadCatalog(string[] albums, string[] artists, string[] genres)
         {
             List<Wrapper> list = new List<Wrapper>();
             foreach (Catalog_Item i in this.list)
             {
+                if (albums != null)
+                    if (!albums.Contains(i.Album.GetValue()))
+                        continue;
+                if(artists != null)
+                {
+                    if (!artists.Contains(i.MainArtist.ToString()))
+                    {
+                        if (i.FeatArtist == null) continue;
+                        else
+                        {
+                            bool flag = false;
+                            foreach(Attributes.Artist a in i.FeatArtist)
+                            {
+                                if (artists.Contains(a.GetValue())) flag = true;
+                            }
+                            if (flag == false) continue;
+                        }
+                    }
+                }
+                if(genres != null)
+                {
+                    if (i.Genres == null) continue;
+                    else
+                    {
+                        bool flag = false;
+                        foreach (Attributes.Genre g in i.Genres)
+                        {
+                            if (genres.Contains(g.GetValue())) flag = true;
+                        }
+                        if (flag == false) continue;
+                    }
+                }
+
                 Wrapper tmp = new Wrapper();
                 if (i.MainArtist != null)
                 {

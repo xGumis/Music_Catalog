@@ -35,11 +35,22 @@ namespace Katalog_Muzyki.View
             }
             if (tmp.Count > 0) GiveCheckedList(tmp.ToArray());
             else GiveCheckedList(null);
+            this.Close();
         }
 
         private void CheckList_FormClosing(object sender, FormClosingEventArgs e)
         {
             WindowClosing();
+        }
+        public void CheckList_CheckTable(string[] chckd)
+        {
+            if(chckd != null)
+            {
+                for (int i = 0; i < checkedListBox.Items.Count; i++)
+                {
+                    if (chckd.Contains(checkedListBox.Items[i].ToString())) checkedListBox.SetItemChecked(i, true);
+                }
+            }
         }
     }
 }

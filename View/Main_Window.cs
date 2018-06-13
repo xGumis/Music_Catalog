@@ -15,8 +15,10 @@ namespace Katalog_Muzyki
     {
         #region Fields
         private List<Filters.Filter> filtersList;
+        private string selectedCol;
         private int selectedIndex;
         private int sortColumn = -1;
+        private string[] filterAlb, filterArt, filterGen;
         #endregion
         #region Delegates
         public event Action<Wrapper> AddEntry;
@@ -27,6 +29,7 @@ namespace Katalog_Muzyki
         public event Action<Stream> SaveToFile;
         public event Action<Stream> OpenFromFile;
         public event Func<string, string[]> GetList;
+        public event Func<string[], string[], string[], List<Wrapper>> LoadFilteredCatalog;
         #endregion
         #region Constructors
         public Main_Window()
@@ -182,6 +185,13 @@ namespace Katalog_Muzyki
         {
             ToolStripDropDownItem tmp = sender as ToolStripDropDownItem;
             var window = new View.CheckList(GetList(tmp.Text));
+            if (tmp.Text == "Album")
+                window.CheckList_CheckTable(filterAlb);
+            if (tmp.Text == "Autor")
+                window.CheckList_CheckTable(filterArt);
+            if (tmp.Text == "Gatunek")
+                window.CheckList_CheckTable(filterGen);
+            selectedCol = tmp.Text;
             window.GiveCheckedList += TakeList;
             window.WindowClosing += Item_Closing;
             this.Enabled = false;
@@ -301,11 +311,12 @@ namespace Katalog_Muzyki
         }
         private void TakeList(string[] arg)
         {
-
+            if (selectedCol == "Album") filterAlb = arg;
+            if (selectedCol == "Autor") filterArt = arg;
+            if (selectedCol == "Gatunek") filterGen = arg;
+            Unpack_List(LoadFilteredCatalog(filterAlb, filterArt, filterGen));
         }
-
-
-
+        
         #endregion
     }
 }

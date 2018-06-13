@@ -22,6 +22,12 @@ namespace Katalog_Muzyki
             view.SaveToFile += View_SaveToFile;
             view.OpenFromFile += View_OpenFromFile;
             view.GetList += View_GetList;
+            view.LoadFilteredCatalog += View_LoadFilteredCatalog;
+        }
+
+        private List<Wrapper> View_LoadFilteredCatalog(string[] arg1, string[] arg2, string[] arg3)
+        {
+           return model.LoadCatalog(arg1,arg2,arg3);
         }
 
         private string[] View_GetList(string arg)
@@ -46,7 +52,7 @@ namespace Katalog_Muzyki
 
         private List<Wrapper> View_LoadCatalog()
         {
-            return model.LoadCatalog();
+            return model.LoadCatalog(null,null,null);
         }
 
         private void View_EditEntry(Wrapper arg, int index)

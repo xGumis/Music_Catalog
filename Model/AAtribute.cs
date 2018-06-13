@@ -19,6 +19,7 @@ namespace Katalog_Muzyki
             if (x.GetValue() == this.GetValue()) return true;
             return false;
         }
+        public override string ToString() { return GetValue(); }
 
         public XmlSchema GetSchema()
         {
