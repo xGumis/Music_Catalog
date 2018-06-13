@@ -190,7 +190,7 @@
             this.maskedTextBox_duration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.maskedTextBox_duration.Location = new System.Drawing.Point(91, 233);
-            this.maskedTextBox_duration.Mask = "00:00:00";
+            this.maskedTextBox_duration.Mask = "99:99:99";
             this.maskedTextBox_duration.Name = "maskedTextBox_duration";
             this.maskedTextBox_duration.Size = new System.Drawing.Size(246, 20);
             this.maskedTextBox_duration.TabIndex = 4;
