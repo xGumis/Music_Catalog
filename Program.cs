@@ -16,7 +16,10 @@ namespace Katalog_Muzyki
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Catalog_List model = new Catalog_List();
+            Main_Window view = new Main_Window();
+            Presenter presenter = new Presenter(view,model);
+            Application.Run(view);
         }
     }
 }

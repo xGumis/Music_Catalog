@@ -1,2 +1,11 @@
 c:\users\xgumi\onedrive\documents\visual studio 2015\Projects\Katalog_Muzyki\bin\Debug\Katalog_Muzyki.exe.config
 C:\Users\xgumi\Source\Repos\Music_Catalog\bin\Debug\Katalog_Muzyki.exe.config
+C:\Users\xgumi\Source\Repos\Music_Catalog\bin\Debug\Katalog_Muzyki.exe
+C:\Users\xgumi\Source\Repos\Music_Catalog\bin\Debug\Katalog_Muzyki.pdb
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.csprojResolveAssemblyReference.cache
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.Main_Window.resources
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.Properties.Resources.resources
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.csproj.GenerateResource.Cache
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.exe
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.pdb
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.View.Item_Window.resources
