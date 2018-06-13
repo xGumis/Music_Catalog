@@ -165,7 +165,7 @@ namespace Katalog_Muzyki
                             {
                                 tmp[j] = FeatArtist[j];
                             }
-                            tmp[i] = new Attributes.Artist(reader.ReadElementContentAsString());
+                            tmp[i-1] = new Attributes.Artist(reader.ReadElementContentAsString());
                             FeatArtist = tmp;
                             i++;
                         }

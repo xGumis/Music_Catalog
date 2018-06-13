@@ -16,5 +16,6 @@ namespace Katalog_Muzyki
         event Func<List<Wrapper>> LoadCatalog;
         event Action<Stream> SaveToFile;
         event Action<Stream> OpenFromFile;
+        event Func<string, string[]> GetList;
     }
 }

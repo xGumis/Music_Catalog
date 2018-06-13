@@ -26,6 +26,7 @@ namespace Katalog_Muzyki
         public event Func<List<Wrapper>> LoadCatalog;
         public event Action<Stream> SaveToFile;
         public event Action<Stream> OpenFromFile;
+        public event Func<string, string[]> GetList;
         #endregion
         #region Constructors
         public Main_Window()
@@ -47,12 +48,20 @@ namespace Katalog_Muzyki
             int count = filtersList.Count;
             foreach (Filters.Filter f in filtersList)
             {
-                listView_Catalog.Columns.Add(f.Name,width/count);
+                listView_Catalog.Columns.Add(f.Name, width / count);
                 if (f is Filters.GroupFilter)
                 {
                     filterToolStripMenuItem.DropDownItems.Add(f.Name);
                     grupToolStripMenuItem.DropDownItems.Add(f.Name);
                 }
+            }
+            foreach (ToolStripDropDownItem i in filterToolStripMenuItem.DropDownItems)
+            {
+                i.Click += filterToolStrip_Click;
+            }
+            foreach (ToolStripDropDownItem i in grupToolStripMenuItem.DropDownItems)
+            {
+                i.Click += groupToolStrip_Click;
             }
         }
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,7 +83,7 @@ namespace Katalog_Muzyki
         }
         private void contextMenuStrip_list_Opening(object sender, CancelEventArgs e)
         {
-            if(listView_Catalog.SelectedItems.Count < 1)
+            if (listView_Catalog.SelectedItems.Count < 1)
             {
                 editToolStripMenuItem.Enabled = false;
                 deleteToolStripMenuItem.Enabled = false;
@@ -95,7 +104,7 @@ namespace Katalog_Muzyki
             save.OverwritePrompt = true;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                if((stream = save.OpenFile()) != null)
+                if ((stream = save.OpenFile()) != null)
                 {
                     SaveToFile(stream);
                     stream.Close();
@@ -169,16 +178,68 @@ namespace Katalog_Muzyki
             this.listView_Catalog.ListViewItemSorter = new ListViewItemComparer(e.Column,
                                                               listView_Catalog.Sorting);
         }
+        private void filterToolStrip_Click(object sender, EventArgs e)
+        {
+            ToolStripDropDownItem tmp = sender as ToolStripDropDownItem;
+            var window = new View.CheckList(GetList(tmp.Text));
+            window.GiveCheckedList += TakeList;
+            window.WindowClosing += Item_Closing;
+            this.Enabled = false;
+            window.Show();
+        }
+        private void groupToolStrip_Click(object sender, EventArgs e)
+        {
+            ToolStripDropDownItem tmp = sender as ToolStripDropDownItem;
+            if (tmp.Text == "Brak")
+                listView_Catalog.ShowGroups = false;
+            else
+            {
+                listView_Catalog.ShowGroups = true;
+                string[] groups = GetList(tmp.Text);
+                List<ListViewGroup> list = new List<ListViewGroup>();
+                foreach (string str in groups)
+                {
+                    list.Add(new ListViewGroup(str));
+                }
+                listView_Catalog.Groups.AddRange(list.ToArray());
+                foreach (ListViewItem item in listView_Catalog.Items)
+                {
+                    if (tmp.Text == "Album")
+                    {
+                        foreach (ListViewGroup gr in listView_Catalog.Groups)
+                        {
+                            if (gr.Header == item.SubItems[2].Text) item.Group = gr;
+                        }
+                    }
+                    if (tmp.Text == "Autor")
+                    {
+                        foreach (ListViewGroup gr in listView_Catalog.Groups)
+                        {
+                            string[] text = item.Tag as string[];
+                            if (gr.Header == text[0]) item.Group = gr;
+                        }
+                    }
+                    if (tmp.Text == "Gatunek")
+                    {
+                        foreach (ListViewGroup gr in listView_Catalog.Groups)
+                        {
+                            string[] text = item.SubItems[3].Tag as string[];
+                            if (gr.Header == text[0]) item.Group = gr;
+                        }
+                    }
+                }
+            }
+
+        }
         #endregion
         #region Custom methods
         private void Item_Closing()
         {
             this.Enabled = true;
         }
-
         private void Item_EditElement(Wrapper arg, int index)
         {
-            EditEntry(arg,index);
+            EditEntry(arg, index);
             listView_Catalog.Items[selectedIndex] = ListItem_Create(arg);
 
         }
@@ -233,16 +294,18 @@ namespace Katalog_Muzyki
         private void Unpack_List(List<Wrapper> arg)
         {
             listView_Catalog.Items.Clear();
-            foreach(Wrapper wr in arg)
+            foreach (Wrapper wr in arg)
             {
                 listView_Catalog.Items.Add(ListItem_Create(wr));
             }
+        }
+        private void TakeList(string[] arg)
+        {
+
         }
 
 
 
         #endregion
-
-        
     }
 }

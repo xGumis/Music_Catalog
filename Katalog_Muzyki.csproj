@@ -55,6 +55,12 @@
     <Compile Include="Model\Attributes\Genre.cs" />
     <Compile Include="Model\Attributes\Title.cs" />
     <Compile Include="Model\Catalog_List.cs" />
+    <Compile Include="View\CheckList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CheckList.Designer.cs">
+      <DependentUpon>CheckList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Filters\Filter.cs" />
     <Compile Include="View\Filters\GroupFilter.cs" />
     <Compile Include="Model\Catalog_Item.cs" />
@@ -75,6 +81,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wrapper.cs" />
+    <EmbeddedResource Include="View\CheckList.resx">
+      <DependentUpon>CheckList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Item_Window.resx">
       <DependentUpon>Item_Window.cs</DependentUpon>
     </EmbeddedResource>

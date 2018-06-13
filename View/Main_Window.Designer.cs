@@ -40,6 +40,7 @@
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_list.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -133,9 +134,17 @@
             // 
             // grupToolStripMenuItem
             // 
+            this.grupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.brakToolStripMenuItem});
             this.grupToolStripMenuItem.Name = "grupToolStripMenuItem";
             this.grupToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.grupToolStripMenuItem.Text = "Grupuj";
+            // 
+            // brakToolStripMenuItem
+            // 
+            this.brakToolStripMenuItem.Name = "brakToolStripMenuItem";
+            this.brakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.brakToolStripMenuItem.Text = "Brak";
             // 
             // Main_Window
             // 
@@ -169,6 +178,7 @@
         private System.Windows.Forms.ToolStripMenuItem plikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zapiszToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brakToolStripMenuItem;
     }
 }
 

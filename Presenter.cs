@@ -21,6 +21,12 @@ namespace Katalog_Muzyki
             view.FindEntry += View_FindEntry;
             view.SaveToFile += View_SaveToFile;
             view.OpenFromFile += View_OpenFromFile;
+            view.GetList += View_GetList;
+        }
+
+        private string[] View_GetList(string arg)
+        {
+            return model.GetList(arg);
         }
 
         private void View_OpenFromFile(System.IO.Stream stream)

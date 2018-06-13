@@ -9,3 +9,4 @@ C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.csproj.Genera
 C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.exe
 C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.pdb
 C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.View.Item_Window.resources
+C:\Users\xgumi\Source\Repos\Music_Catalog\obj\Debug\Katalog_Muzyki.View.CheckList.resources

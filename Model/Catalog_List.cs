@@ -13,10 +13,13 @@ namespace Katalog_Muzyki
 {
     public class Catalog_List : IXmlSerializable
     {
+        #region Fields
         private List<Attributes.Album> albumsList;
         private List<Attributes.Artist> artistsList;
         private List<Attributes.Genre> genresList;
         private List<Catalog_Item> list;
+        #endregion
+        #region Data mangement
         private Catalog_Item Create_Item(Wrapper arg)
         {
             #region Ini
@@ -162,6 +165,49 @@ namespace Katalog_Muzyki
             }
             return -1;
         }
+        public string[] GetList(string arg)
+        {
+            if (arg == "Album")
+            {
+                if (albumsList != null)
+                {
+                    var tab = new string[albumsList.Count];
+                    for(int i =0; i< albumsList.Count; i++)
+                    {
+                        tab[i] = albumsList[i].GetValue();
+                    }
+                    return tab;
+                }
+            }
+            if (arg == "Autor")
+            {
+                if (artistsList != null)
+                {
+                    var tab = new string[artistsList.Count];
+                    for (int i = 0; i < artistsList.Count; i++)
+                    {
+                        tab[i] = artistsList[i].GetValue();
+                    }
+                    return tab;
+                }
+            }
+            if (arg == "Gatunek")
+            {
+                if (genresList != null)
+                {
+                    var tab = new string[genresList.Count];
+                    for (int i = 0; i < genresList.Count; i++)
+                    {
+                        tab[i] = genresList[i].GetValue();
+                    }
+                    return tab;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        #region File management
         public void SaveToFile(Stream stream)
         {
             XmlSerializer xs = new XmlSerializer(typeof(Catalog_List));
@@ -173,12 +219,10 @@ namespace Katalog_Muzyki
             XmlReader reader = XmlReader.Create(stream, sett);
             ReadXml(reader);
         }
-
         public XmlSchema GetSchema()
         {
             return null;
         }
-
         public void ReadXml(XmlReader reader)
         {
             while (reader.Read())
@@ -204,7 +248,6 @@ namespace Katalog_Muzyki
                 }
             }
         }
-
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Items");
@@ -267,7 +310,7 @@ namespace Katalog_Muzyki
                         albumsList.Add(new Attributes.Album(reader.ReadElementContentAsString()));
                     }
                 }
-                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Albums List") break;
+                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Albums_List") break;
 
             }
         }
@@ -283,7 +326,7 @@ namespace Katalog_Muzyki
                         artistsList.Add(new Attributes.Artist(reader.ReadElementContentAsString()));
                     }
                 }
-                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Artists List") break;
+                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Artists_List") break;
 
             }
         }
@@ -299,9 +342,10 @@ namespace Katalog_Muzyki
                         genresList.Add(new Attributes.Genre(reader.ReadElementContentAsString()));
                     }
                 }
-                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Genres List") break;
+                if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Genres_List") break;
 
             }
         }
+        #endregion
     }
 }
